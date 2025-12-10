@@ -24,16 +24,16 @@ const Projects = () => {
 
     return( 
     <>
-        <div className="bg-slate-50 py-20 px-6 w-9/12 mx-auto">
-            <div className="mb-8">
-                <h1 className="text-4xl font-bold text-gray-800">Projects</h1>
+        <div className="bg-slate-50 py-12 px-4 w-full max-w-6xl mx-auto">
+            <div className="mb-4">
+                <h1 className="text-3xl md:text-4xl font-bold text-gray-800">Projects</h1>
             </div>
             
             <div className="mt-6">
-                <div className="bg-white rounded-lg shadow-lg p-6">
-                    <div className="mb-6">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-2">Capstone Project</h2>
-                        <a href="https://kwentura-39597.web.app/" target="_blank" rel="noopener noreferrer" className="text-2xl font-semibold text-blue-600 mb-4">Kwentura</a>
+                <div className="bg-white rounded-lg shadow-lg p-4 md:p-6">
+                    <div className="mb-4">
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Capstone Project</h2>
+                        <a href="https://kwentura-39597.web.app/" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-semibold text-blue-600 mb-4 inline-block">Kwentura</a>
                         <p className="text-gray-700"> Kwentura (Kwentong Kultura) is a mobile and web application aiming to improve the 
                             cultural awareness of kindergarten and Grade 1 students at Monlimar Development 
                             Academy. The platform blends Filipinos' kids' stories as interactive storytelling, text-to
@@ -45,7 +45,7 @@ const Projects = () => {
                         </p>
                     </div>
                     
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         {images.map((image, index) => (
                             <div 
                                 key={index}
@@ -53,7 +53,7 @@ const Projects = () => {
                                 onClick={() => setSelectedImage(image)}
                             >
                                 <img 
-                                    className="w-full h-40 object-cover transform group-hover:scale-105 transition-transform duration-300" 
+                                    className="w-full h-36 md:h-40 object-cover transform group-hover:scale-105 transition-transform duration-300" 
                                     src={image.src} 
                                     alt={image.alt}
                                 />
@@ -73,10 +73,11 @@ const Projects = () => {
                     className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
                     onClick={() => setSelectedImage(null)}
                 >
-                    <div className="relative max-w-6xl max-h-[90vh] w-full">
+                    <div className="relative max-w-4xl max-h-[90vh] w-full">
                         <button 
-                            className="absolute -top-12 right-0 text-white hover:text-gray-300 text-4xl font-bold transition-colors"
+                            className="absolute top-4 right-4 text-white hover:text-gray-300 text-2xl md:text-4xl font-bold transition-colors z-50 bg-black/30 rounded-full w-10 h-10 flex items-center justify-center"
                             onClick={() => setSelectedImage(null)}
+                            aria-label="Close preview"
                         >
                             ×
                         </button>

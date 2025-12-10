@@ -6,9 +6,9 @@ const Header = () => {
 
     return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="w-9/12 mx-auto px-6 py-4">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-4">
             <div className="flex justify-between items-center">
-                <a href="/" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                <a href="/" className="text-lg md:text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
                 Emmanuel Roland V. Pelingon
                 </a>
 
@@ -51,12 +51,12 @@ const Header = () => {
             </div>
 
             {isMenuOpen && (
-                <nav className="md:hidden mt-4 pb-4">
-                <ul className="flex flex-col gap-4">
+                <nav className="md:hidden mt-4 pb-4 bg-white rounded-lg shadow-sm">
+                <ul className="flex flex-col gap-3 p-3">
                     <li>
                     <a 
                         href="/about" 
-                        className="block text-gray-600 hover:text-blue-600 transition-colors font-medium"
+                        className="block text-gray-600 hover:text-blue-600 transition-colors font-medium px-2 py-2"
                         onClick={() => setIsMenuOpen(false)}
                     >
                         About
@@ -65,7 +65,7 @@ const Header = () => {
                     <li>
                     <a 
                         href="/projects" 
-                        className="block text-gray-600 hover:text-blue-600 transition-colors font-medium"
+                        className="block text-gray-600 hover:text-blue-600 transition-colors font-medium px-2 py-2"
                         onClick={() => setIsMenuOpen(false)}
                     >
                         Projects
@@ -74,7 +74,7 @@ const Header = () => {
                     <li>
                     <a 
                         href="/contact" 
-                        className="block text-gray-600 hover:text-blue-600 transition-colors font-medium"
+                        className="block text-gray-600 hover:text-blue-600 transition-colors font-medium px-2 py-2"
                         onClick={() => setIsMenuOpen(false)}
                     >
                         Contact
