@@ -3,14 +3,14 @@ import Profile from '../private/profile/Profile.png'
 
 const About = () => {
     return (
-        <div className="bg-slate-50 py-12 px-4 w-full max-w-4xl mx-auto">
-            <div>
-                <div className="bg-white rounded-2xl shadow-lg p-6 md:p-12">
-                <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+        <div className="bg-slate-50 py-20 px-6 w-full mx-auto">
+            <div className="max-w-4xl mx-auto">
+                <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                <div className="flex flex-col md:flex-row gap-8 items-center">
                     
                     <div className="flex-shrink-0">
-                        <div className="rounded-full w-36 h-36 md:w-48 md:h-48 p-1 bg-gradient-to-r from-blue-400 to-purple-400">
-                            <img src={Profile} alt="Profile" className="rounded-full w-full h-full object-cover"/>
+                        <div className="rounded-full w-48 h-48 p-1 bg-gradient-to-r from-blue-400 to-purple-400">
+                            <img src={Profile} alt="Profile" className="rounded-full"/>
                         </div>
                     </div>
 
@@ -20,24 +20,24 @@ const About = () => {
                         <span>Philippines</span>
                     </div>
                     
-                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    <h1 className="text-4xl font-bold text-gray-900 mb-4">
                         I'm Emmanuel
                     </h1>
                     
-                    <p className="text-base md:text-lg text-gray-600 mb-6">
+                    <p className="text-lg text-gray-600 mb-6">
                         Aspiring Information Technology student looking for a web or mobile development internship 
                         to apply and hone programming skills, to contribute to meaningful projects, learn work ethics, 
                         and to expand my technical capabilities.
                     </p>
 
-                    <div className="flex gap-3 justify-center md:justify-start">
+                    <div className="flex gap-4 justify-center md:justify-start">
                         <a 
                         href="https://www.linkedin.com/in/emmanuel-roland-pelingon-3bb99539a/" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                        className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                         >
-                        <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
+                        <Linkedin className="w-5 h-5" />
                         <span>LinkedIn</span>
                         </a>
 
@@ -45,9 +45,9 @@ const About = () => {
                         href="https://github.com/GlitchyNeighbor/" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
+                        className="flex items-center gap-2 px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
                         >
-                        <Github className="w-4 h-4 md:w-5 md:h-5" />
+                        <Github className="w-5 h-5" />
                         <span>GitHub</span>
                         </a>
                     </div>
