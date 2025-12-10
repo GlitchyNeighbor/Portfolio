@@ -8,7 +8,7 @@ const Header = () => {
     <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-4">
             <div className="flex justify-between items-center">
-                <a href="/" className="text-lg md:text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                <a href="#About" className="text-lg md:text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
                 Emmanuel Roland V. Pelingon
                 </a>
 
@@ -16,7 +16,7 @@ const Header = () => {
                 <ul className="flex gap-8">
                     <li>
                     <a 
-                        href="/about" 
+                        href="#About" 
                         className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
                     >
                         About
@@ -24,7 +24,7 @@ const Header = () => {
                     </li>
                     <li>
                     <a 
-                        href="/projects" 
+                        href="#Projects" 
                         className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
                     >
                         Projects
@@ -32,7 +32,7 @@ const Header = () => {
                     </li>
                     <li>
                     <a 
-                        href="/contact" 
+                        href="#Contact" 
                         className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
                     >
                         Contact
