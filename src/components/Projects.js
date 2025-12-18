@@ -29,6 +29,8 @@ import ManageStoriesPNG from "../private/Kwentura/Manage_Stories.png";
 import RestoreAccountPNG from "../private/Kwentura/Restore_Account.png";
 import StudentApprovalPNG from "../private/Kwentura/Student_Approval.png";
 import StudentListPNG from "../private/Kwentura/Student_List-T.png";
+import AlreadyLoggedInPNG from "../private/Kwentura/Already_Logged_In_Notif.png";
+import ForcedLogOutPNG  from "../private/Kwentura/Forced_Logout.png"
 
 const Projects = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -69,6 +71,8 @@ const Projects = () => {
         { src: StudentApprovalPNG, alt: "Student Approval for Teachers" },
         { src: StudentListPNG, alt: "Student List for Teachers" },
         { src: RestoreAccountPNG, alt: "Restore Account Confirmation" },
+        { src: AlreadyLoggedInPNG, alt: "Account is already logged in somewhere" },
+        { src: ForcedLogOutPNG, alt: "Logged in account is forced to logout" },
 
     ];
 
