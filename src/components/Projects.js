@@ -32,15 +32,21 @@ import StudentListPNG from "../private/Kwentura/Student_List-T.png";
 import AlreadyLoggedInPNG from "../private/Kwentura/Already_Logged_In_Notif.png";
 import ForcedLogOutPNG  from "../private/Kwentura/Forced_Logout.png"
 
+import TaskAppOutputPNG from "../private/TaskApp/Output.png";
+
 const Projects = () => {
     const [selectedImage, setSelectedImage] = useState(null);
-    const [showImages, setShowImages] = useState(false);
+    const [activeProject, setActiveProject] = useState(null);
 
-    const toggleShowImages = () => {
-        setShowImages((s) => !s);
+    const toggleProject = (project) => {
+        setActiveProject((p) => (p === project ? null : project));
     }
+
+    const taskAppImages = [
+        { src: TaskAppOutputPNG, alt: "Task Management App" },
+    ]
     
-    const images = [
+    const kwenturaImages = [
         { src: AboutPNG, alt: "About Page" },
         { src: AdminPNG, alt: "Admin's Dashboard" },
         { src: ContactPNG, alt: "Contact Page" },
@@ -73,7 +79,6 @@ const Projects = () => {
         { src: RestoreAccountPNG, alt: "Restore Account Confirmation" },
         { src: AlreadyLoggedInPNG, alt: "Account is already logged in somewhere" },
         { src: ForcedLogOutPNG, alt: "Logged in account is forced to logout" },
-
     ];
 
     return( 
@@ -101,17 +106,17 @@ const Projects = () => {
 
                     <div className="flex justify-center md:justify-start mb-4">
                         <button
-                            onClick={toggleShowImages}
-                            aria-pressed={showImages}
+                            onClick={() => toggleProject('kwentura')}
+                            aria-pressed={activeProject === 'kwentura'}
                             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                         >
-                            {showImages ? 'Hide Images' : 'Show Images'}
+                            {activeProject === 'kwentura' ? 'Hide Images' : 'Show Images'}
                         </button>
                     </div>
-                    
-                    {showImages && (
+
+                    {activeProject === 'kwentura' && (
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            {images.map((image, index) => (
+                            {kwenturaImages.map((image, index) => (
                                 <div 
                                     key={index}
                                     className={`group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-100`}
@@ -135,6 +140,55 @@ const Projects = () => {
                     )}
                 </div>
             </div>
+            
+            <div className="mt-6">
+                <div className="bg-white rounded-lg shadow-lg p-4 md:p-6">
+                    <div className="mb-4">
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Personal Project</h2>
+                        <a href="/" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-semibold text-blue-600 mb-4 inline-block">Task Management App</a>
+                        <p className="text-gray-700">
+                            A simple task management application. 
+                            It is still in progress.
+                        </p>
+                    </div>
+
+                    <div className="flex justify-center md:justify-start mb-4">
+                        <button
+                            onClick={() => toggleProject('taskApp')}
+                            aria-pressed={activeProject === 'taskApp'}
+                            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                        >
+                            {activeProject === 'taskApp' ? 'Hide Images' : 'Show Images'}
+                        </button>
+                    </div>
+
+                    {activeProject === 'taskApp' && (
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            {taskAppImages.map((image, index) => (
+                                <div 
+                                    key={index}
+                                    className={`group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-100`}
+                                    onClick={() => setSelectedImage(image)}
+                                >
+                                    <img 
+                                        className="w-full h-36 md:h-40 object-cover transform group-hover:scale-105 transition-transform duration-300" 
+                                        src={image.src} 
+                                        alt={image.alt}
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                        <p className="text-white text-sm font-medium p-3 w-full">
+                                            Click to enlarge
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </div>
+
 
             {selectedImage && (
                 <div 
