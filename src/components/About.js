@@ -27,8 +27,8 @@ const About = () => {
                         
                             <p className="text-base md:text-lg text-gray-600 mb-6">
                                 I am a student at National University - MOA and have been coding for 4 years.
-                                I have since been honing my skills in HTML CSS and Javascript and have explored React and React Native.
-                                I am currently exploring Next.js framework and dive deeper into database in the future.
+                                I have since been honing my skills in HTML, CSS, and Javascript and have explored React and React Native.
+                                I am currently exploring the Next.js framework and will dive deeper into the database in the future.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start items-center sm:items-stretch">
                                 <a 
