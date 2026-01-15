@@ -1,45 +1,26 @@
 import { useState } from "react";
-import AboutPNG from "../private/Kwentura/About.png";
-import AdminPNG from "../private/Kwentura/Admin.png";
-import ContactPNG from "../private/Kwentura/Contact.png";
-import Contact2PNG from "../private/Kwentura/Contact2.png";
-import HomePNG from "../private/Kwentura/Home.png";
-import LoginPNG from "../private/Kwentura/Login.png";
-import SignUpPNG from "../private/Kwentura/SignUp.png";
-import TeacherPNG from "../private/Kwentura/Teacher.png";
-import AssessmentPNG from "../private/Kwentura/Assessment.png";
-import CorrectPNG from "../private/Kwentura/Correct.png";
-import CoverPNG from "../private/Kwentura/Cover.png"; 
 import LibraryPNG from "../private/Kwentura/Library.png";
-import ScorePNG from "../private/Kwentura/Score.png";
-import StoryPNG from "../private/Kwentura/Story.png";
 import SynopsisPNG from "../private/Kwentura/Synopsis.png";
-import WrongPNG from "../private/Kwentura/Wrong.png";
-import AddStoryPNG from "../private/Kwentura/Add_Story.png";
-import AdminActionLogsPNG from "../private/Kwentura/Admin_Action_Logs.png";
-import ArchiveAccountPNG from "../private/Kwentura/Archive_Account.png";
-import ArchivedAccountsPNG from "../private/Kwentura/Archived_Accounts.png";
-import DeleteAccountPNG from "../private/Kwentura/Delete_Account.png";
-import EditStoryPNG from "../private/Kwentura/Edit_Story.png";
-import ManageAccountsPNG from "../private/Kwentura/Manage_Accounts.png";
-import ManageAdminAccountsPNG from "../private/Kwentura/Manage_Admin_Accounts.png";
-import ManageTeacherAccountsPNG from "../private/Kwentura/Manage_Teacher_Accounts.png";
-import ManageStudentsAccountsPNG from "../private/Kwentura/Manage_Students_Accounts.png";
-import ManageStoriesPNG from "../private/Kwentura/Manage_Stories.png";
-import RestoreAccountPNG from "../private/Kwentura/Restore_Account.png";
-import StudentApprovalPNG from "../private/Kwentura/Student_Approval.png";
-import StudentListPNG from "../private/Kwentura/Student_List-T.png";
-import AlreadyLoggedInPNG from "../private/Kwentura/Already_Logged_In_Notif.png";
-import ForcedLogOutPNG  from "../private/Kwentura/Forced_Logout.png"
-
+import ReadStoryPNG from "../private/Kwentura/ReadStory.png";
+import LibraryMobilePNG from "../private/Kwentura/LibraryMobile.png"
+import SynopsisMobilePNG from "../private/Kwentura/SynopsisMobile.png"
+import ReadStoryMobilePNG from "../private/Kwentura/ReadStoryMobile.png"
 import TaskAppOutputPNG from "../private/TaskApp/Output.png";
 
 const Projects = () => {
     const [selectedImage, setSelectedImage] = useState(null);
-    const [activeProject, setActiveProject] = useState(null);
+    const [activeProjects, setActiveProjects] = useState(new Set());
 
     const toggleProject = (project) => {
-        setActiveProject((p) => (p === project ? null : project));
+        setActiveProjects((prev) => {
+            const newSet = new Set(prev);
+            if (newSet.has(project)) {
+                newSet.delete(project);
+            } else {
+                newSet.add(project);
+            }
+            return newSet;
+        });
     }
 
     const taskAppImages = [
@@ -47,38 +28,12 @@ const Projects = () => {
     ]
     
     const kwenturaImages = [
-        { src: AboutPNG, alt: "About Page" },
-        { src: AdminPNG, alt: "Admin's Dashboard" },
-        { src: ContactPNG, alt: "Contact Page" },
-        { src: Contact2PNG, alt: "Contact Page" },
-        { src: HomePNG, alt: "Home Page" },
-        { src: LoginPNG, alt: "Login Page" },
-        { src: SignUpPNG, alt: "Sign Up Page" },
-        { src: TeacherPNG, alt: "Teacher's Dashboard" },
-        { src: AssessmentPNG, alt: "Story Assessmenet" }, 
-        { src: CorrectPNG, alt: "Correct Answer for Story Assessment" }, 
-        { src: CoverPNG, alt: "Story's Cover Page" },
-        { src: LibraryPNG, alt: "Library Section" },
-        { src: ScorePNG, alt: "Assessment Scoring System" }, 
-        { src: StoryPNG, alt: "Story Viewing" },
-        { src: SynopsisPNG, alt: "Story Synopsis" },
-        { src: WrongPNG, alt: "Wrong Answer for Story Assessment" },
-        { src: AddStoryPNG, alt: "Add Story Modal" },
-        { src: AdminActionLogsPNG, alt: "Admin Action Logs" },
-        { src: ArchiveAccountPNG, alt: "Archive Account Modal" },
-        { src: ArchivedAccountsPNG, alt: "Archived Accounts List" },
-        { src: DeleteAccountPNG, alt: "Delete Account Confirmation" },
-        { src: EditStoryPNG, alt: "Edit Story Modal" },
-        { src: ManageAccountsPNG, alt: "Manage Accounts for Admins" }, 
-        { src: ManageAdminAccountsPNG, alt: "Manage Admin Accounts for Super Admins" }, 
-        { src: ManageTeacherAccountsPNG, alt: "Manage Teacher Accounts for Admins" },
-        { src: ManageStudentsAccountsPNG, alt: "Manage Student Accounts for Admins" },
-        { src: ManageStoriesPNG, alt: "Manage Stories for Teachers" }, 
-        { src: StudentApprovalPNG, alt: "Student Approval for Teachers" },
-        { src: StudentListPNG, alt: "Student List for Teachers" },
-        { src: RestoreAccountPNG, alt: "Restore Account Confirmation" },
-        { src: AlreadyLoggedInPNG, alt: "Account is already logged in somewhere" },
-        { src: ForcedLogOutPNG, alt: "Logged in account is forced to logout" },
+        { src: LibraryMobilePNG, alt: "Library Section in Mobile App", isMobile: true },
+        { src: SynopsisMobilePNG, alt: "Story Synopsis in Mobile App", isMobile: true },
+        { src: ReadStoryMobilePNG, alt: "Reading the Story in Mobile App", isMobile: true },
+        { src: LibraryPNG, alt: "Library Section in Web App", isMobile: false },
+        { src: SynopsisPNG, alt: "Story Synopsis in Web App", isMobile: false },
+        { src: ReadStoryPNG, alt: "Reading the Story in Web App", isMobile: false },
     ];
 
     return( 
@@ -107,15 +62,15 @@ const Projects = () => {
                     <div className="flex justify-center md:justify-start mb-4">
                         <button
                             onClick={() => toggleProject('kwentura')}
-                            aria-pressed={activeProject === 'kwentura'}
+                            aria-pressed={activeProjects.has('kwentura')}
                             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                         >
-                            {activeProject === 'kwentura' ? 'Hide Images' : 'Show Images'}
+                            {activeProjects.has('kwentura') ? 'Hide Images' : 'Show Images'}
                         </button>
                     </div>
 
-                    {activeProject === 'kwentura' && (
-                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {activeProjects.has('kwentura') && (
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
                             {kwenturaImages.map((image, index) => (
                                 <div 
                                     key={index}
@@ -123,14 +78,14 @@ const Projects = () => {
                                     onClick={() => setSelectedImage(image)}
                                 >
                                     <img 
-                                        className="w-full h-36 md:h-40 object-cover transform group-hover:scale-105 transition-transform duration-300" 
+                                        className={`w-full ${image.isMobile ? 'h-56 md:h-64 object-contain' : 'object-cover'} transform group-hover:scale-105 transition-transform duration-300`} 
                                         src={image.src} 
                                         alt={image.alt}
                                         loading="lazy"
                                         decoding="async"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                                        <p className="text-white text-sm font-medium p-3 w-full">
+                                        <p className="text-white text-l font-medium p-3 w-full bg-black">
                                             Click to enlarge
                                         </p>
                                     </div>
@@ -155,14 +110,14 @@ const Projects = () => {
                     <div className="flex justify-center md:justify-start mb-4">
                         <button
                             onClick={() => toggleProject('taskApp')}
-                            aria-pressed={activeProject === 'taskApp'}
+                            aria-pressed={activeProjects.has('taskApp')}
                             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                         >
-                            {activeProject === 'taskApp' ? 'Hide Images' : 'Show Images'}
+                            {activeProjects.has('taskApp') ? 'Hide Images' : 'Show Images'}
                         </button>
                     </div>
 
-                    {activeProject === 'taskApp' && (
+                    {activeProjects.has('taskApp') && (
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {taskAppImages.map((image, index) => (
                                 <div 
@@ -192,10 +147,10 @@ const Projects = () => {
 
             {selectedImage && (
                 <div 
-                    className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
+                    className="fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-4 backdrop-blur-md"
                     onClick={() => setSelectedImage(null)}
                 >
-                    <div className="relative max-w-4xl max-h-[90vh] w-full">
+                    <div className="relative max-w-4xl w-full" style={{ maxHeight: '90vh', display: 'flex', flexDirection: 'column' }}>
                         <button 
                             className="absolute top-4 right-4 text-white hover:text-gray-300 text-2xl md:text-4xl font-bold transition-colors z-50 bg-black/30 rounded-full w-10 h-10 flex items-center justify-center"
                             onClick={() => setSelectedImage(null)}
@@ -203,11 +158,12 @@ const Projects = () => {
                         >
                             ×
                         </button>
-                        <div className="bg-white rounded-lg shadow-2xl overflow-hidden">
+                        <div className="bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col" style={{ maxHeight: '90vh' }}>
                             <img 
                                 src={selectedImage.src} 
                                 alt={selectedImage.alt} 
-                                className="w-full h-auto object-contain max-h-[85vh]"
+                                className="w-full h-auto object-contain"
+                                style={{ maxHeight: 'calc(90vh - 80px)' }}
                                 loading="lazy"
                                 decoding="async"
                             />

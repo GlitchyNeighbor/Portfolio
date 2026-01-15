@@ -1,5 +1,5 @@
-import { Github, Linkedin, MapPin } from 'lucide-react';
-import Profile from '../private/profile/Profile.png'
+import { Github, Linkedin, MapPin, UserRound } from 'lucide-react';
+
 
 const About = () => {
     return (
@@ -10,7 +10,7 @@ const About = () => {
                         
                         <div className="flex-shrink-0">
                             <div className="rounded-full w-36 h-36 sm:w-48 sm:h-48 p-1 bg-gradient-to-r from-blue-400 to-purple-400">
-                                <img src={Profile} alt="Profile" className="rounded-full w-full h-full object-cover"/>
+                                <UserRound className="rounded-full w-full h-full object-cover"/>
                             </div>
                         </div>
 
@@ -21,13 +21,13 @@ const About = () => {
                             </div>
                             
                             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                                I'm Emmanuel
+                                I am Emmanuel Pelingon
                             </h1>
                         
                             <p className="text-base md:text-lg text-gray-600 mb-6">
-                                Aspiring Information Technology student looking for a web or mobile development internship 
-                                to apply and hone programming skills, to contribute to meaningful projects, learn work ethics, 
-                                and to expand my technical capabilities.
+                                I am a student at National University - MOA and have been coding for 4 years.
+                                I have since been honing my skills in HTML CSS and Javascript and have explored React and React Native.
+                                I am currently exploring Next.js framework 
                             </p>
                             <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start items-center sm:items-stretch">
                                 <a 
