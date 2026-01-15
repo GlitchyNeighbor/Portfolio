@@ -1,4 +1,5 @@
-import { Github, Linkedin, MapPin, UserRound } from 'lucide-react';
+import { Github, Linkedin, MapPin, } from 'lucide-react';
+import profilePNG from "../private/profile.png";
 
 
 const About = () => {
@@ -10,7 +11,7 @@ const About = () => {
                         
                         <div className="flex-shrink-0">
                             <div className="rounded-full w-36 h-36 sm:w-48 sm:h-48 p-1 bg-gradient-to-r from-blue-400 to-purple-400">
-                                <UserRound className="rounded-full w-full h-full object-cover"/>
+                                <img src={profilePNG} className="rounded-full w-full h-full object-cover" alt="Profile"/>
                             </div>
                         </div>
 
@@ -27,7 +28,7 @@ const About = () => {
                             <p className="text-base md:text-lg text-gray-600 mb-6">
                                 I am a student at National University - MOA and have been coding for 4 years.
                                 I have since been honing my skills in HTML CSS and Javascript and have explored React and React Native.
-                                I am currently exploring Next.js framework 
+                                I am currently exploring Next.js framework and dive deeper into database in the future.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start items-center sm:items-stretch">
                                 <a 

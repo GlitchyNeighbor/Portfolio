@@ -46,8 +46,8 @@ const Projects = () => {
             <div className="mt-6">
                 <div className="bg-white rounded-lg shadow-lg p-4 md:p-6">
                     <div className="mb-4">
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Capstone Project</h2>
-                        <a href="https://kwentura-39597.web.app/" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-semibold text-blue-600 mb-4 inline-block">Kwentura</a>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Capstone Project - Kwentura</h2>
+
                         <p className="text-gray-700"> Kwentura (Kwentong Kultura) is a mobile and web application aiming to improve the 
                             cultural awareness of kindergarten and Grade 1 students at Monlimar Development 
                             Academy. The platform blends Filipinos' kids' stories as interactive storytelling, text-to
@@ -57,6 +57,31 @@ const Projects = () => {
                             education, promotes digital literacy, as well as the accessibility of traditional stories to our 
                             future generations with its innovative features.
                         </p>
+
+                        <br />
+
+                        <p className="font-semibold">A Teacher Demo Account is provided in github repository named "DemoCredentials".</p>
+                        
+                        <div className="flex gap-3">
+
+                            <div>
+                                <span className="text-xl md:text-xl font-semibold">Live Demo: </span>
+                                <a href="https://kwentura-39597.web.app/" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-xl md:text-xl font-semibold text-blue-600 mb-4 inline-block">Kwentura
+                                </a>
+                            </div>
+
+                            <div>
+                                <span className="text-xl md:text-xl font-semibold">Github: </span>
+                                <a href="https://github.com/GlitchyNeighbor/Kwentura-web-app" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-xl md:text-xl font-semibold text-blue-600 mb-4 inline-block">Kwentura
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="flex justify-center md:justify-start mb-4">
@@ -105,6 +130,27 @@ const Projects = () => {
                             A simple task management application. 
                             It is still in progress.
                         </p>
+
+                        <div className="flex gap-3">
+                            <div>
+                                <span className="text-xl md:text-xl font-semibold">Live Demo: </span>
+                                <a href="https://simple-tasking.vercel.app/" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-xl md:text-xl font-semibold text-blue-600 mb-4 inline-block">Task App
+                                </a>
+                            </div>
+
+                            <div>
+                                <span className="text-xl md:text-xl font-semibold">Github: </span>
+                                <a href="https://github.com/GlitchyNeighbor/task-management-app" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-xl md:text-xl font-semibold text-blue-600 mb-4 inline-block">Task App
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div className="flex justify-center md:justify-start mb-4">
