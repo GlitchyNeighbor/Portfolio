@@ -1,31 +1,45 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, User, Briefcase, Code2, Mail } from 'lucide-react';
+import { User, Briefcase, Code2, Mail } from 'lucide-react';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [hoveredIcon, setHoveredIcon] = useState(null);
-    const [isScrolling, setIsScrolling] = useState(false);
-    const [scrollTimeout, setScrollTimeout] = useState(null);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isNavVisible, setIsNavVisible] = useState(true);
 
     useEffect(() => {
+        let scrollTimeout;
+
         const handleScroll = () => {
-            setIsScrolling(true);
-            
-            if (scrollTimeout) clearTimeout(scrollTimeout);
-            
-            const timeout = setTimeout(() => {
-                setIsScrolling(false);
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+
+            setIsNavVisible(true);
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                setIsNavVisible(false);
             }, 2000);
-            
-            setScrollTimeout(timeout);
+        };
+
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
         };
 
         window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleResize);
+        
+        handleResize();
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            if (scrollTimeout) clearTimeout(scrollTimeout);
+            window.removeEventListener('resize', handleResize);
+            clearTimeout(scrollTimeout);
         };
-    }, [scrollTimeout]);
+    }, []);
 
     const navItems = [
         { icon: User, label: 'About', href: '#About' },
@@ -34,63 +48,78 @@ const Header = () => {
         { icon: Mail, label: 'Contact', href: '#Contact' },
     ];
 
-    return (
-    <header className={`fixed top-6 left-6 z-50 transition-opacity duration-300 ${isScrolling || isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none md:pointer-events-auto md:opacity-100'}`}>
-        <nav className="hidden md:flex flex-col gap-6">
-            {navItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                    <div 
+    const mobileNav = (
+        <div className="container mx-auto px-2 py-2">
+            <nav className="flex justify-around items-center">
+                {navItems.map((item) => (
+                    <a 
                         key={item.label}
-                        className="relative group"
-                        onMouseEnter={() => setHoveredIcon(item.label)}
-                        onMouseLeave={() => setHoveredIcon(null)}
+                        href={item.href}
+                        className="flex flex-col items-center gap-1 text-gray-300 hover:text-cyan-400 transition-colors duration-300 px-2 py-1 rounded-lg"
                     >
-                        <a 
-                            href={item.href}
-                            className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-900 rounded-full border border-cyan-500/30 hover:border-cyan-400/70 text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-cyan-500/50"
-                        >
-                            <Icon className="w-5 h-5" />
-                        </a>
-                        {hoveredIcon === item.label && (
-                            <div className="absolute left-14 top-1/2 transform -translate-y-1/2 bg-slate-800/95 backdrop-blur-sm text-cyan-300 px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap pointer-events-none border border-cyan-500/30 shadow-lg">
-                                {item.label}
-                                <div className="absolute right-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-r-slate-800/95"></div>
-                            </div>
-                        )}
-                    </div>
-                );
-            })}
-        </nav>
-
-        <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden flex items-center justify-center w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-900 rounded-full border border-cyan-500/30 hover:border-cyan-400/70 text-gray-300 hover:text-cyan-400 transition-all duration-300 shadow-lg"
-            aria-label="Toggle menu"
-        >
-            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
-
-        {isMenuOpen && (
-            <nav className="md:hidden absolute top-14 left-0 flex flex-col gap-2 bg-slate-800/95 backdrop-blur-sm rounded-lg shadow-lg border border-cyan-500/30 p-2">
-                {navItems.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                        <a 
-                            key={item.label}
-                            href={item.href}
-                            className="flex items-center gap-3 px-4 py-3 text-gray-300 hover:text-cyan-400 hover:bg-slate-700 rounded-lg transition-all duration-300"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            <Icon className="w-5 h-5" />
-                            <span className="font-medium">{item.label}</span>
-                        </a>
-                    );
-                })}
+                        <item.icon className="w-5 h-5" />
+                        <span className="text-xs font-medium">{item.label}</span>
+                    </a>
+                ))}
             </nav>
-        )}
-    </header>
+        </div>
     );
-};
 
+    return (
+        <header className={`sticky top-0 z-50 transition-all duration-300
+            ${isScrolled || isMobile ? 'bg-slate-900/80 backdrop-blur-sm' : 'bg-transparent'}
+            ${isNavVisible || isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        >
+            {isMobile ? mobileNav : (
+                <>
+                    <div className={`transition-opacity duration-500 ${!isScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                        <div className="container mx-auto px-6 py-4">
+                            <nav className="flex justify-center items-center gap-8">
+                                {navItems.map((item) => (
+                                    <a 
+                                        key={item.label}
+                                        href={item.href}
+                                        className="text-lg font-medium text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                                    >
+                                        {item.label}
+                                    </a>
+                                ))}
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div className={`transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                        <div className={`fixed top-6 left-6 z-50`}>
+                            <nav className="flex flex-col gap-6">
+                                {navItems.map((item) => {
+                                    const Icon = item.icon;
+                                    return (
+                                        <div 
+                                            key={item.label}
+                                            className="relative group"
+                                            onMouseEnter={() => setHoveredIcon(item.label)}
+                                            onMouseLeave={() => setHoveredIcon(null)}
+                                        >
+                                            <a 
+                                                href={item.href}
+                                                className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-900 rounded-full text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-110"
+                                            >
+                                                <Icon className="w-5 h-5" />
+                                            </a>
+                                            {hoveredIcon === item.label && (
+                                                <div className="absolute left-14 top-1/2 transform -translate-y-1/2 bg-slate-800/95 backdrop-blur-sm text-cyan-300 px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap pointer-events-none">
+                                                    {item.label}
+                                                    <div className="absolute right-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-r-slate-800/95"></div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </nav>
+                        </div>
+                    </div>
+                </>
+            )}
+        </header>
+    );};
 export default Header;
