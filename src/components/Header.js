@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { User, Briefcase, Code2, Mail } from 'lucide-react';
 
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMenuOpen, _setIsMenuOpen] = useState(false);
     const [hoveredIcon, setHoveredIcon] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
