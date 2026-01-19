@@ -32,7 +32,7 @@ const About = () => {
                         <p className="text-xl text-cyan-400 font-semibold mb-6">Full-Stack Developer & IT Support</p>
                     
                         <p className="text-base md:text-lg text-gray-300 mb-4 leading-relaxed">
-                            I'm a passionate developer with <span className="text-cyan-400 font-semibold">2 years</span> of coding experience. Currently a 4th year student at <span className="text-cyan-400 font-semibold">National University - MOA</span>, I specialize in building modern web and mobile applications.
+                            I'm a passionate developer with <span className="text-cyan-400 font-semibold">2 years</span> of hands-on development through projects and coursework. Currently a 4th year student at <span className="text-cyan-400 font-semibold">National University - MOA</span>, I specialize in building modern web and mobile applications.
                         </p>
 
                         <p className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed">

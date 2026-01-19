@@ -50,7 +50,7 @@ const Home = () => {
                         <div className="mt-16 grid grid-cols-3 gap-8 text-center">
                             <div>
                                 <div className="text-3xl md:text-4xl font-bold text-cyan-300">2</div>
-                                <p className="text-gray-400 text-sm md:text-base mt-2">Years of Experience</p>
+                                <p className="text-gray-400 text-sm md:text-base mt-2">Years of hands-on development through projects and coursework</p>
                             </div>
                             <div>
                                 <div className="text-3xl md:text-4xl font-bold text-cyan-300">2</div>
