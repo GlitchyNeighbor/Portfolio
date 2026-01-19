@@ -4,12 +4,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        
-      </Routes>
-    </BrowserRouter>
+    <div className="bg-slate-950 min-h-screen">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          
+        </Routes>
+      </BrowserRouter>
+    </div>
 
   );
 }
