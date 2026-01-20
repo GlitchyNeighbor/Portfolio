@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { User, Briefcase, Code2, Mail } from 'lucide-react';
 
 const Header = () => {
-    const [isMenuOpen, _setIsMenuOpen] = useState(false);
     const [hoveredIcon, setHoveredIcon] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
@@ -68,7 +67,7 @@ const Header = () => {
     return (
         <header className={`sticky top-0 z-50 transition-all duration-300
             ${isScrolled || isMobile ? 'bg-slate-900/80 backdrop-blur-sm' : 'bg-transparent'}
-            ${isNavVisible || isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            ${isNavVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         >
             {isMobile ? mobileNav : (
                 <>
